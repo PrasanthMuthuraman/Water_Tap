@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water-Tap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+<div id="waterLevel" class="leftbox">
+
+</div>
+
+<div class="rightbox">
+    <div class="right_top">
+        <div id="tapButton" onclick="water()" class="tap_button">
+        </div>
+    </div>
+    <div class="right_bottom">
+        <div class="pipe">
+        </div>
+        <div class="tap">
+    
+        </div>
+        <div id="waterFlow" class="waterflow">
+
+        </div>
+    </div>
+    
+</div>
+    </div>
+    <script>
+
+
+ var intervalId;
+ var isFlowing=false;
+
+ document.getElementById('tap').addEventListener('click', function() {
+  if (!isFlowing) {
+    startFlow();
+  } else {
+    stopFlow();
+  }
+});
+ 
+
+ function startFlow(){
+isFlowing=true;
+intervalId=setInterval(water ,50);
+document.getElementById('tapButton').style.backgroundColor = 'green';
+
+}
+
+ 
+ function stopFlow(){
+isFlowing="false";
+clearInterval(intervalId);
+document.getElementById('tapButton').style.backgroundColor = 'red';
+
+ }
+ 
+ 
+
+
+function water(){
+    var waterLevel=document.getElementById("waterLevel")
+var waterFlow=document.getElementById("waterFlow")
+var tapButton=document.getElementById("tapButton");
+var currentHeight = parseFloat(waterLevel.style.height) || 100;
+
+  var newHeight = Math.max(currentHeight - 1, 0); // Decrease by 1 pixel
+
+  waterLevel.style.height = newHeight + '%';
+
+
+
+ }
+
+
+ if (newHeight === 0) {
+    stopFlow();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
